@@ -1,15 +1,15 @@
-var App = new Vue({
+let App = new Vue({
   el: '#app',
   data: {
     user: '',
     repositorios: []
   },	
-  methods: {    
-  },
-})
+  methods: {
+    searchData: () => {
 
-function searchData() {
-  App.$http.get(`http://api.github.com/users/${App.user}/repos`).then( ({ data }) => {
-    App.repositorios = data
-  })
-}
+      this.$http.get(`http://api.github.com/users/${App.user}/repos`).then( ({ data }) => {
+        this.repositorios = data
+      })
+    }
+  }
+})
