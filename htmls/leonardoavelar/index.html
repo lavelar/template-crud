@@ -1,0 +1,56 @@
+
+<!-- Leonardo Avelar --- RA: 1701801 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>API do github</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container mt-5">
+  <h2>API do github</h2>
+
+  <p>Consumindo API do github para buscar os Repositórios de um usuário</p>
+
+  <div id="app">
+
+    <input type="text" v-model="user" placeholder="Digite o username do github" class="form-control">
+
+    <h4 class="mt-5">Repositórios do usuário {{ user }}</h4>
+    
+    <table class="table mt-3">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Linguagem</th>
+          <th scope="col">Visualizar</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr v-for="x in repositorios">
+          <th scope="row"><img v-bind:src="x.owner.avatar_url" width="30" height="30"/></th>
+          <td>{{ x.name }}</td>
+          <td>{{ x.description }}</td>
+          <td>{{ x.language }}</td>
+          <td><a v-bind:href="x.html_url" target="_blanck">Ver</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+  <button onclick="searchData()" class="btn btn-success">Buscar</button>
+  </p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.3.6/vue-resource.js"></script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
